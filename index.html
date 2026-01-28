@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Will you be my valentine?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0f1724;
+      --card:#0b1220;
+      --accent:#ff6b81;
+      --muted:#9aa4b2;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,#071221 0%, #0f1724 100%);
+      color:#e6eef8;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+    .card{
+      width:min(680px,100%);
+      background:rgba(255,255,255,0.03);
+      padding:36px;
+      border-radius:16px;
+      box-shadow:0 10px 30px rgba(2,6,23,0.6);
+      text-align:center;
+      backdrop-filter: blur(6px);
+    }
+    .screen{display:none;flex-direction:column;align-items:center;gap:20px}
+    .screen.active{display:flex}
+    .art{width:160px;height:160px;display:flex;align-items:center;justify-content:center}
+    .art svg{width:100%;height:100%}
+    h1{font-weight:600;margin:0;font-size:clamp(20px,3.5vw,34px);letter-spacing:0.4px}
+    p{margin:0;color:var(--muted);font-weight:300}
+    .controls{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;justify-content:center}
+    button{
+      appearance:none;border:0;padding:12px 20px;border-radius:10px;font-weight:600;cursor:pointer;
+      background:linear-gradient(180deg,#1f6ed4,#1753c0);color:white;min-width:96px;
+      box-shadow:0 6px 18px rgba(20,60,160,0.18);
+      transform-origin:center center;transition:transform .18s ease,box-shadow .18s ease;
+    }
+    button.secondary{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--muted);min-width:96px}
+    button:active{transform:translateY(1px)}
+    .spacer{height:6px}
+    @media (max-width:480px){
+      .card{padding:24px;border-radius:12px}
+      .art{width:120px;height:120px}
+      button{padding:10px 16px}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-live="polite">
+    <!-- Step 1 -->
+    <section class="screen active" id="step-1">
+      <div class="art" aria-hidden="true">
+        <!-- simple heart outline -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21s-7.5-4.35-9.5-6.3C-0.2 11.4 2 6 6 6c2.5 0 3.5 2 6 5 2.5-3 3.5-5 6-5 4 0 6.2 5.4 3.5 8.7C19.5 16.65 12 21 12 21z" fill="url(#g)" opacity="0.95"/>
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#ff9aa2"/>
+              <stop offset="1" stop-color="#ff6b81"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h1>Hello miss lills</h1>
+      <p>Click below when you're ready</p>
+      <div class="spacer"></div>
+      <div class="controls">
+        <button id="next-1">Next</button>
+      </div>
+    </section>
+
+    <!-- Step 2 -->
+    <section class="screen" id="step-2">
+      <div class="art" aria-hidden="true">
+        <!-- envelope with heart -->
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="12" width="52" height="40" rx="4" fill="#fff" opacity="0.06" />
+          <path d="M8 14l24 18L56 14" stroke="#ff8da1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 28c3 6 8 9 12 11 4-2 9-5 12-11" stroke="#ff6b81" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h1>I had a quick question</h1>
+      <p>that I would like to ask you</p>
+      <div class="controls">
+        <button id="next-2">Next</button>
+      </div>
+    </section>
+
+    <!-- Step 3 -->
+    <section class="screen" id="step-3">
+      <div class="art" aria-hidden="true">
+        <!-- big heart -->
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <path d="M60 102s-34-20.5-46-32C2 50 20 30 36 36c8 3 10 8 18 18 8-10 10-15 18-18 16-6 34 14 22 34-12 20-46 36-46 36z" fill="#ff6b81" />
+          </g>
+        </svg>
+      </div>
+      <h1>Would you like to be my valentine?</h1>
+      <p>Pick one</p>
+      <div class="controls">
+        <button id="yes">Yes</button>
+        <button class="secondary" id="no">No</button>
+      </div>
+    </section>
+
+    <!-- Step 4 -->
+    <section class="screen" id="step-4">
+      <div class="art" aria-hidden="true">
+        <!-- confetti / celebration -->
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="40" r="4" fill="#ffd26a" />
+          <circle cx="90" cy="50" r="4" fill="#ff9aa2" />
+          <rect x="52" y="60" width="16" height="28" rx="3" fill="#98f0ff" />
+          <path d="M60 36c4 0 8 3 8 7s-4 7-8 7-8-3-8-7 4-7 8-7z" fill="#ff6b81" />
+        </svg>
+      </div>
+      <h1>YAY!</h1>
+      <p>I'm so happy</p>
+    </section>
+
+  </main>
+
+  <script>
+    (function(){
+      const steps = Array.from(document.querySelectorAll('.screen'));
+      let index = 0;
+      const show = (n)=>{
+        steps.forEach((s,i)=> s.classList.toggle('active', i===n));
+        index = n;
+        // focus first focusable in step for accessibility
+        const btn = steps[n].querySelector('button');
+        if(btn) setTimeout(()=>btn.focus(),120);
+      };
+
+      document.getElementById('next-1').addEventListener('click', ()=> show(1));
+      document.getElementById('next-2').addEventListener('click', ()=> show(2));
+
+      const yesBtn = document.getElementById('yes');
+      const noBtn = document.getElementById('no');
+      let yesScale = 1;
+
+      yesBtn.addEventListener('click', ()=>{
+        // go to celebration
+        show(3);
+      });
+
+      noBtn.addEventListener('click', ()=>{
+        // don't navigate; make Yes button bigger each time No is clicked
+        yesScale += 0.12; // grow a bit each click
+        yesBtn.style.transform = `scale(${yesScale})`;
+        yesBtn.style.boxShadow = `0 10px 24px rgba(0,0,0,0.18)`;
+        // playful pulse on no button to show it was clicked
+        noBtn.animate([
+          { transform: 'translateY(0)' },
+          { transform: 'translateY(-6px)' },
+          { transform: 'translateY(0)' }
+        ],{ duration:260, easing:'ease-out' });
+      });
+
+      // Allow Enter key to activate focused button
+      document.addEventListener('keydown', (e)=>{
+        if(e.key==='Enter'){
+          const active = document.activeElement;
+          if(active && active.tagName==='BUTTON') active.click();
+        }
+      });
+
+      // initial focus
+      show(0);
+    })();
+  </script>
+</body>
+</html>
